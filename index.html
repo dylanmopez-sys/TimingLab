@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timing Lab | Esteganografía temporal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="encabezado">
+        <div>
+            <p class="etiqueta">LABORATORIO DE CIBERSEGURIDAD</p>
+            <h1>Timing Lab</h1>
+            <p class="subtitulo">Demostración de un canal encubierto temporal</p>
+        </div>
+
+        <div class="estado">
+            <span class="punto"></span>
+            CANAL TEMPORAL
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <section class="panel">
+            <div class="titulo-panel">
+                <div>
+                    <p class="etiqueta">01 / TRANSMISIÓN</p>
+                    <h2>Mensaje de prueba</h2>
+                </div>
+                <span class="etiqueta-secundaria">SOLICITUDES HTTP</span>
+            </div>
+
+            <label for="mensaje">Mensaje para codificar temporalmente</label>
+            <textarea
+                id="mensaje"
+                rows="4"
+                maxlength="12"
+                placeholder="Escribí un mensaje corto..."
+            ></textarea>
+
+            <div class="informacion">
+                <span>Máximo 8 bytes UTF-8</span>
+                <span id="contador">0 / 8 bytes</span>
+            </div>
+
+            <div class="acciones">
+                <button id="btn-transmitir" class="boton-principal">
+                    Transmitir mensaje
+                </button>
+                <button id="btn-limpiar" class="boton-secundario">
+                    Limpiar
+                </button>
+            </div>
+
+            <p id="estado-transmision" class="mensaje-estado" aria-live="polite">
+                Listo para calibrar el canal temporal.
+            </p>
+        </section>
+
+        <section class="estadisticas">
+            <article class="tarjeta">
+                <p>Bits analizados</p>
+                <strong id="bits-analizados">—</strong>
+                <span>Bits medidos</span>
+            </article>
+
+            <article class="tarjeta">
+                <p>Recuperación correcta</p>
+                <strong id="precision">—</strong>
+                <span>Precisión calculada</span>
+            </article>
+
+            <article class="tarjeta">
+                <p>Duración</p>
+                <strong id="duracion">—</strong>
+                <span>Tiempo de transmisión</span>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="titulo-panel">
+                <div>
+                    <p class="etiqueta">02 / ANÁLISIS</p>
+                    <h2>Intervalos temporales</h2>
+                </div>
+                <span class="etiqueta-secundaria">SEGUNDOS</span>
+            </div>
+
+            <div class="grafica" id="grafica">
+                <p class="grafica-vacia">
+                    Los intervalos medidos aparecerán aquí después de transmitir.
+                </p>
+            </div>
+
+            <div class="leyenda">
+                <span><i class="color-cero"></i> Bit 0 · Intervalo corto</span>
+                <span><i class="color-uno"></i> Bit 1 · Intervalo largo</span>
+            </div>
+        </section>
+
+        <section class="panel">
+            <p class="etiqueta">03 / RESULTADO</p>
+            <h2>Mensaje recuperado</h2>
+
+            <div class="resultado" id="mensaje-recuperado">
+                <span>Esperando una transmisión...</span>
+            </div>
+        </section>
+
+        <section class="panel">
+            <p class="etiqueta">04 / DIAGNÓSTICO</p>
+            <h2>Análisis del canal</h2>
+
+            <div class="diagnostico" id="diagnostico">
+                <span class="icono-diagnostico">i</span>
+                <p>
+                    Todavía no hay datos suficientes para analizar
+                    los intervalos temporales.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                Timing Lab · Proyecto académico de ciberseguridad
+            </p>
+            <p>
+                Demostración educativa: los tiempos de red pueden introducir errores.
+            </p>
+        </footer>
+    </main>
+</body>
+</html>
